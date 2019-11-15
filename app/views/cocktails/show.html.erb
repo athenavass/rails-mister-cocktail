@@ -1,0 +1,17 @@
+<%= link_to "Back to cocktails", cocktails_path %>
+
+<h1> <%= @cocktail.name %> </h1>
+
+<h4>Ingredients- Doses associated</h4>
+
+<ul>
+<% @doses.each do |dose| %>
+<li> <%= Ingredient.find(dose.ingredient_id).name %> and the dose is:<%= dose.description %></li>
+<p><%= link_to "Delete this ingredient & associated dose", dose_path(dose), method: :delete,
+data: { confirm: "Are you sure?"} %></p>
+<% end %>
+</ul>
+
+<p> <%= link_to "Add an ingredient & associated dose", new_cocktail_dose_path(@cocktail) %></p>
+
+
